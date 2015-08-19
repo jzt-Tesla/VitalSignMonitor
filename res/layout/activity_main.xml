@@ -1,0 +1,26 @@
+<LinearLayout
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="#ff0000ff"
+android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+<Button
+android:id="@+id/start"
+android:layout_width="140dp"
+android:layout_height="42dp"
+android:text="@string/start"  />
+
+<ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="5dip"
+        android:minHeight="5dip"
+        android:visibility="invisible" >
+</ProgressBar>
+
+</LinearLayout>

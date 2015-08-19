@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Vital Sign Monitor</string>
+    
+    <string name="start">Start</string>
+    
+    <string name="title_activity_main">Vital Sign Monitor</string>
+
+</resources>
