@@ -140,7 +140,7 @@ public class MainActivity extends Activity {
 			//wl.acquire();
 			System.out.println( "Success? "+wl.isHeld() );
 			
-			
+			publishProgress(0);
 			
 			for(int loop_num=0;loop_num<1;loop_num++)
 			{
