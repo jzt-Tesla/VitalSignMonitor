@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
 	Button btnStart;	
 	
 	private static final String TAG = "MyActivity";
+	private static final String DATA_FILE_NAME = "data.txt";
 	private ProgressBar mProgressBar;
 	
 	@Override
@@ -144,10 +146,10 @@ public class MainActivity extends Activity {
 			
 			for(int loop_num=0;loop_num<1;loop_num++)
 			{
-			
+				InputStreamReader reader = null;
 				System.out.println( "Begin to process file..."+loop_num);
-	          	  DataInputStream localDataInputStream = new DataInputStream(new FileInputStream(inFile));
-	                BufferedReader myReader = new BufferedReader(new InputStreamReader(localDataInputStream));
+				reader = new InputStreamReader(getAssets().open(DATA_FILE_NAME));
+	          	BufferedReader myReader = new BufferedReader(reader);
 			myReader.readLine();
 			
 			while((ascii_code=myReader.read())!=-1)
@@ -485,7 +487,15 @@ public class MainActivity extends Activity {
 			}//whole file loop:line by line
 			
 			myReader.close();
-			localDataInputStream.close();
+			
+			if (reader != null) {
+	                try {
+	                    reader.close();
+	                } catch(IOException e) {
+
+	                }
+	            }
+	        
 			}//loop_num
 			
 			//wl.release();
