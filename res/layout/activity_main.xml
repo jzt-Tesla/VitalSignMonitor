@@ -147,15 +147,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
    android:textAppearance="?android:attr/textAppearanceSmall"
    android:textColor="#FFFFFF" />
                        
-                    
-
-
-<Button
-android:id="@+id/start"
-android:layout_width="140dp"
-android:layout_height="42dp"
-android:text="@string/start"  />
-
 <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -165,6 +156,12 @@ android:text="@string/start"  />
         android:minHeight="5dip"
         android:visibility="invisible" >
 </ProgressBar>
+
+<Button
+android:id="@+id/start"
+android:layout_width="140dp"
+android:layout_height="42dp"
+android:text="@string/start"  />
 
 
 </LinearLayout>

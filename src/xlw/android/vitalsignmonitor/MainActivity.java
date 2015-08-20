@@ -181,7 +181,7 @@ public class MainActivity extends Activity {
 			while((ascii_code=myReader.read())!=-1)
 			{
 				long start_time1=System.currentTimeMillis();
-				Thread.sleep(10000);
+				Thread.sleep(2000);
 				long end_time1=System.currentTimeMillis();
 				long sleep_time=end_time1-start_time1;
 				Log.v(TAG, "sleep time:"+sleep_time+"\n");
