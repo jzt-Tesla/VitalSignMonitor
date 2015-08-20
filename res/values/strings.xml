@@ -5,5 +5,35 @@
     <string name="start">Start</string>
     
     <string name="title_activity_main">Vital Sign Monitor</string>
+    
+    <string name="HR">HR</string>
+    
+    <string name="SBP">SBP</string>
+    
+    <string name="DBP">DBP</string>
+    
+    <string name="MBP">MBP</string>
+    
+    <string name="RR">RR</string>
+    
+    <string name="SpO2">SpO2</string>
+    
+    <string name="Alarm">Alarm</string>
+    
+    <string name="HR_Value"></string>
+    
+    <string name="SBP_Value"></string>
+    
+    <string name="DBP_Value"></string>
+    
+    <string name="MBP_Value"></string>
+    
+    <string name="RR_Value"></string>
+    
+    <string name="SpO2_Value"></string>
+    
+    <string name="Alarm_Value"></string>
+    
+    
 
 </resources>

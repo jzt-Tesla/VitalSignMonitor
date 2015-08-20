@@ -28,6 +28,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -37,13 +38,28 @@ public class MainActivity extends Activity {
 	private static final String TAG = "MyActivity";
 	private static final String DATA_FILE_NAME = "data.txt";
 	private ProgressBar mProgressBar;
+	private TextView mHRValue;
+	private TextView mSBPValue;
+	private TextView mDBPValue;
+	private TextView mMBPValue;
+	private TextView mRRValue;
+	private TextView mSpO2Value;
+	private TextView mAlarmValue;
+	private uiUpdateData mUIupdateData;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_main);
 	mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-
+	mHRValue = (TextView) findViewById(R.id.HR_Value);
+	mSBPValue = (TextView) findViewById(R.id.SBP_Value);
+	mDBPValue = (TextView) findViewById(R.id.DBP_Value);
+	mMBPValue = (TextView) findViewById(R.id.MBP_Value);
+	mRRValue  = (TextView) findViewById(R.id.RR_Value);
+	mSpO2Value = (TextView) findViewById(R.id.SpO2_Value);
+	mAlarmValue = (TextView) findViewById(R.id.Alarm_Value);
+	mUIupdateData = new uiUpdateData();
 	btnStart = (Button) findViewById(R.id.start);
 	btnStart.setOnClickListener(new OnClickListener() {
 
@@ -56,7 +72,7 @@ public class MainActivity extends Activity {
 
 	}// onCreate
 	
-	class VitalSignMonitorTask extends AsyncTask<Void, Integer, String> {
+	class VitalSignMonitorTask extends AsyncTask<Void, uiUpdateData, String> {
 
 
 		@Override
@@ -137,12 +153,22 @@ public class MainActivity extends Activity {
 			Log.v(TAG, "onclick:"+dir+"\n");
 			//File myFile = new File(filePath);
 			//myFile.createNewFile();
+			
 			DataOutputStream localDataOutputStream = new DataOutputStream(new FileOutputStream(outFile));
 			OutputStreamWriter myOutWriter = new OutputStreamWriter(localDataOutputStream);
 			//wl.acquire();
 			System.out.println( "Success? "+wl.isHeld() );
 			
-			publishProgress(0);
+			mUIupdateData.setRowCount(0);
+			mUIupdateData.setHR("");
+			mUIupdateData.setSBP("");
+			mUIupdateData.setDBP("");
+			mUIupdateData.setMBP("");
+			mUIupdateData.setRR("");
+			mUIupdateData.setSpO2("");
+			mUIupdateData.setAlarm("");
+			
+			publishProgress(mUIupdateData);
 			
 			for(int loop_num=0;loop_num<1;loop_num++)
 			{
@@ -482,7 +508,16 @@ public class MainActivity extends Activity {
 				
 				row_count++;
 				
-				publishProgress((int)(row_count/(float)10 * 100));
+				mUIupdateData.setRowCount(row_count);
+				mUIupdateData.setHR(HR_string);
+				mUIupdateData.setSBP(SBP_string);
+				mUIupdateData.setDBP(DBP_string);
+				mUIupdateData.setMBP(MBP_string);
+				mUIupdateData.setRR(RR_string);
+				mUIupdateData.setSpO2(SpO2_string);
+				mUIupdateData.setAlarm(alarm_string);
+				
+				publishProgress(mUIupdateData);
 										
 			}//whole file loop:line by line
 			
@@ -515,9 +550,18 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		protected void onProgressUpdate(Integer... values) {
-			Log.v(TAG, "AsyncTask onProgressUpdate:"+values[0]+"\n");
-			mProgressBar.setProgress(values[0]);
+		protected void onProgressUpdate(uiUpdateData... values) {
+			Log.v(TAG, "AsyncTask onProgressUpdate\n");
+			mProgressBar.setProgress(values[0].getRowCount()*10);
+			mHRValue.setText(values[0].getHR());
+			mSBPValue.setText(values[0].getSBP());
+			mDBPValue.setText(values[0].getDBP());
+			mMBPValue.setText(values[0].getMBP());
+			mRRValue.setText(values[0].getRR());
+			mSpO2Value.setText(values[0].getSpO2());
+			mAlarmValue.setText(values[0].getAlarm());
+			
+			
 		}
 
 		@Override

@@ -7,6 +7,149 @@ android:orientation="vertical"
 xmlns:android="http://schemas.android.com/apk/res/android"
 >
 
+<TextView
+   android:id="@+id/HR_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/HR"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/HR_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/HR_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/SBP_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/SBP"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/SBP_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/SBP_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/DBP_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/DBP"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/DBP_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/DBP_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/MBP_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/MBP"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/MBP_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/MBP_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/RR_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/RR"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/RR_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/RR_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/SpO2_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/SpO2"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/SpO2_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/SpO2_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/Alarm_Label"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/Alarm"
+   android:textAppearance="?android:attr/textAppearanceMedium"
+   android:textColor="#FFFFFF" />
+
+<TextView
+   android:id="@+id/Alarm_Value"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+                            
+   android:gravity="start|center"
+   android:text="@string/Alarm_Value"
+   android:textAppearance="?android:attr/textAppearanceSmall"
+   android:textColor="#FFFFFF" />
+                       
+                    
+
+
 <Button
 android:id="@+id/start"
 android:layout_width="140dp"
@@ -22,5 +165,6 @@ android:text="@string/start"  />
         android:minHeight="5dip"
         android:visibility="invisible" >
 </ProgressBar>
+
 
 </LinearLayout>
