@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 			Log.v(TAG, "onclick");
 			File dir = Environment.getExternalStorageDirectory();
 			File inFile = new File(dir, "Data/data1.txt");
-			File outFile= new File(dir, "Data/result.txt");
+			//File outFile= new File(dir, "Data/result.txt");
 			//BN BN_Object = new BN();
 			FUZZYLOGIC FL_Object= new FUZZYLOGIC();
 			int ascii_code=0;
@@ -154,8 +154,8 @@ public class MainActivity extends Activity {
 			//File myFile = new File(filePath);
 			//myFile.createNewFile();
 			
-			DataOutputStream localDataOutputStream = new DataOutputStream(new FileOutputStream(outFile));
-			OutputStreamWriter myOutWriter = new OutputStreamWriter(localDataOutputStream);
+			//DataOutputStream localDataOutputStream = new DataOutputStream(new FileOutputStream(outFile));
+			//OutputStreamWriter myOutWriter = new OutputStreamWriter(localDataOutputStream);
 			//wl.acquire();
 			System.out.println( "Success? "+wl.isHeld() );
 			
@@ -187,15 +187,15 @@ public class MainActivity extends Activity {
 				Log.v(TAG, "sleep time:"+sleep_time+"\n");
 				
 				Log.v(TAG, "before Write First of Record:"+ascii_code+"\n");
-				myOutWriter.write(ascii_code);//Write First Character of "Record#"
+				//myOutWriter.write(ascii_code);//Write First Character of "Record#"
 				
 				while((ascii_code=myReader.read())!=9)
 				{
 					Log.v(TAG, "before Write Rest of Record:"+ascii_code+"\n");
-					myOutWriter.write(ascii_code);//Write Rest Characters of "Record#"
+					//myOutWriter.write(ascii_code);//Write Rest Characters of "Record#"
 				}
 				
-				myOutWriter.write(9);//Insert a space
+				//myOutWriter.write(9);//Insert a space
 				
 				while((ascii_code=myReader.read())==9)
 				{
@@ -203,15 +203,15 @@ public class MainActivity extends Activity {
 				}//Skip spaces
 				
 				Log.v(TAG, "before Write First of Date:"+ascii_code+"\n");
-				myOutWriter.write(ascii_code);//Write First Character of "Date"
+				//myOutWriter.write(ascii_code);//Write First Character of "Date"
 				
 				while((ascii_code=myReader.read())!=9)
 				{
 					Log.v(TAG, "before Write Rest of Date:"+ascii_code+"\n");
-					myOutWriter.write(ascii_code);//Write Rest Characters of "Date"
+					//myOutWriter.write(ascii_code);//Write Rest Characters of "Date"
 				}
 				
-				myOutWriter.write(9);//Insert a space
+				//myOutWriter.write(9);//Insert a space
 				
 				while((ascii_code=myReader.read())==9)
 				{
@@ -219,15 +219,15 @@ public class MainActivity extends Activity {
 				}//Skip spaces
 				
 				Log.v(TAG, "before Write First of Time:"+ascii_code+"\n");
-				myOutWriter.write(ascii_code);//Write First Character of "Time"
+				//myOutWriter.write(ascii_code);//Write First Character of "Time"
 				
 				while((ascii_code=myReader.read())!=9)
 				{
 					Log.v(TAG, "before Write Rest of Time:"+ascii_code+"\n");
-					myOutWriter.write(ascii_code);//Write Rest Characters of "Time"
+					//myOutWriter.write(ascii_code);//Write Rest Characters of "Time"
 				}
 				
-				myOutWriter.write(9);//Insert a Horizontal tab
+				//myOutWriter.write(9);//Insert a Horizontal tab
 				
 				while((ascii_code=myReader.read())==9)
 				{
@@ -421,8 +421,8 @@ public class MainActivity extends Activity {
 				Log.v(TAG, "get alarm value:"+alarm+"---process time:"+ProcessTime+"ns"+"\n");
 				parameter_string=Double.toString(alarm);
 				Log.v(TAG, "get alarm:"+parameter_string+"\n");
-				myOutWriter.write(parameter_string);//Write the value of "alarm"
-				myOutWriter.write(9);//Insert a space
+				//myOutWriter.write(parameter_string);//Write the value of "alarm"
+				//myOutWriter.write(9);//Insert a space
 				TotalCnt=TotalCnt+1;
 				if(alarm<=0.5)
 				{	
@@ -437,7 +437,7 @@ public class MainActivity extends Activity {
 				}
 				
 				parameter_string=Double.toString(alarm);
-				myOutWriter.write(parameter_string);//Write the value of "alarm"
+				//myOutWriter.write(parameter_string);//Write the value of "alarm"
 				
 				if(Double.compare(1,alM)==0&&Double.compare(1,alarm)==0)
 				{
@@ -474,37 +474,37 @@ public class MainActivity extends Activity {
 				double PPV = TP/(TP+FP);
 				double NPV = TN/(TN+FN);
 				
-				myOutWriter.write(9);//Insert a tab
+				//myOutWriter.write(9);//Insert a tab
 				
 				parameter_string=Long.toString(ProcessTime);
-				myOutWriter.write(parameter_string);//Write the value of "Process Time"
+				//myOutWriter.write(parameter_string);//Write the value of "Process Time"
 				
-				myOutWriter.write(9);//Insert a tab
+				//myOutWriter.write(9);//Insert a tab
 				
 				parameter_string=Double.toString(CorrectPercentage);
-				myOutWriter.write(parameter_string);//Write the value of "CorrectPercentage"
+				//myOutWriter.write(parameter_string);//Write the value of "CorrectPercentage"
 				
-                myOutWriter.write(9);//Insert a tab
+                //myOutWriter.write(9);//Insert a tab
 				
                 sensitivity_string=Double.toString(sensitivity);
-				myOutWriter.write(sensitivity_string);//Write the value of "sensitivity"
+				//myOutWriter.write(sensitivity_string);//Write the value of "sensitivity"
 				
-                myOutWriter.write(9);//Insert a tab
+                //myOutWriter.write(9);//Insert a tab
 				
                 specificity_string=Double.toString(specificity);
-				myOutWriter.write(specificity_string);//Write the value of "specificity"
+				//myOutWriter.write(specificity_string);//Write the value of "specificity"
 				
-                myOutWriter.write(9);//Insert a tab
+                //myOutWriter.write(9);//Insert a tab
 				
                 PPV_string=Double.toString(PPV);
-				myOutWriter.write(PPV_string);//Write the value of "PPV"
+				//myOutWriter.write(PPV_string);//Write the value of "PPV"
 				
-                myOutWriter.write(9);//Insert a tab
+                //myOutWriter.write(9);//Insert a tab
 				
                 NPV_string=Double.toString(NPV);
-				myOutWriter.write(NPV_string);//Write the value of "NPV"
+				//myOutWriter.write(NPV_string);//Write the value of "NPV"
 								
-				myOutWriter.write(13);//Insert a "Enter"
+				//myOutWriter.write(13);//Insert a "Enter"
 				
 				row_count++;
 				
@@ -535,14 +535,13 @@ public class MainActivity extends Activity {
 			
 			//wl.release();
 			
-			myOutWriter.close();
-			localDataOutputStream.close();
+			//myOutWriter.close();
+			//localDataOutputStream.close();
 			
 			
 
 		} catch (Exception e) {
-			Toast.makeText(getBaseContext(), e.getMessage(),
-					Toast.LENGTH_SHORT).show();
+			System.out.println( "Exception reported in background thread: " +e.getMessage() );
 		}
 		return "Vital Sign Monitoring Finished.";
 		
