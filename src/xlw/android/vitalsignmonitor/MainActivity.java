@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
 			//BN BN_Object = new BN();
 			FUZZYLOGIC FL_Object= new FUZZYLOGIC();
 			int ascii_code=0;
-			char[] charArray = new char[10];
+			char[] charArray = new char[15];
 			double alM=0;
 			int k=1;
 			int row_count = 0;
@@ -251,7 +251,7 @@ public class MainActivity extends Activity {
 				
 				Log.v(TAG, "get hr value:"+hr+"\n");
 				
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
@@ -276,7 +276,7 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "get sbp:"+SBP_string+"\n");
 				sbp = Double.parseDouble(SBP_string);
 				Log.v(TAG, "get sbp value:"+sbp+"\n");
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
@@ -300,7 +300,7 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "get dbp:"+DBP_string+"\n");
 				dbp = Double.parseDouble(DBP_string);
 				Log.v(TAG, "get dbp value:"+dbp+"\n");
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
@@ -324,7 +324,7 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "get mbp:"+MBP_string+"\n");
 				mbp = Double.parseDouble(MBP_string);
 				Log.v(TAG, "get mbp value:"+mbp+"\n");
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
@@ -349,7 +349,7 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "get rr:"+RR_string+"\n");
 				rr = Double.parseDouble(RR_string);
 				Log.v(TAG, "get rr value:"+rr+"\n");
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
@@ -374,7 +374,7 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "get spo2:"+SpO2_string+"\n");
 				spo2 = Double.parseDouble(SpO2_string);
 				Log.v(TAG, "get spo2 value:"+spo2+"\n");
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
@@ -399,7 +399,7 @@ public class MainActivity extends Activity {
                 Log.v(TAG, "get alM:"+parameter_string+"\n");
 				alM = Double.parseDouble(parameter_string);
 				Log.v(TAG, "get alM value:"+alM+"\n");
-				for(k=0;k<10;k++)
+				for(k=0;k<15;k++)
 				{
 					charArray[k]=0;
 				}
