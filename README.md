@@ -1,6 +1,6 @@
 # VitalSignMonitor
 
-[![IMAGE ALT TEXT HERE](https://github.com/xwang90/VitalSignMonitor/blob/master/res/VitalSignMonitor.gif)](https://www.youtube.com/watch?v=jNdUlVWcwLo)
+[![IMAGE ALT TEXT HERE](https://github.com/xwang90/VitalSignMonitor/blob/master/res/VitalSignMonitor.gif)](https://www.youtube.com/watch?v=h5HAFUzbe8o)
 
 An Android application, for Vital Sign Monitoring, towards Heart Rate, Blood Pressure, etc. 
 
