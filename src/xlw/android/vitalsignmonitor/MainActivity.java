@@ -18,7 +18,7 @@ import java.io.PrintStream;
 import java.lang.Double;
 
 import android.os.AsyncTask;
-import 	android.os.Environment;
+import android.os.Environment;
 import android.os.PowerManager;
 import android.app.Activity;
 import android.content.Context;
@@ -30,6 +30,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 public class MainActivity extends Activity {
 	// GUI controls
@@ -37,6 +41,7 @@ public class MainActivity extends Activity {
 	
 	private static final String TAG = "MyActivity";
 	private static final String DATA_FILE_NAME = "data.txt";
+	private boolean trepnIsInstalled=false;
 	private ProgressBar mProgressBar;
 	private TextView mHRValue;
 	private TextView mSBPValue;
@@ -60,6 +65,17 @@ public class MainActivity extends Activity {
 	mSpO2Value = (TextView) findViewById(R.id.SpO2_Value);
 	mAlarmValue = (TextView) findViewById(R.id.Alarm_Value);
 	mUIupdateData = new uiUpdateData();
+	
+	trepnIsInstalled=appIsInstalled("com.quicinc.trepn");
+	
+	if(trepnIsInstalled)
+	{
+	  // To Start Trepn Profiler Listening:
+	  Intent trepnProfiler = new Intent();
+	  trepnProfiler.setClassName("com.quicinc.trepn", "com.quicinc.trepn.TrepnService");
+	  startService(trepnProfiler);	
+	}
+	
 	btnStart = (Button) findViewById(R.id.start);
 	btnStart.setOnClickListener(new OnClickListener() {
 
@@ -78,6 +94,14 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			mProgressBar.setVisibility(ProgressBar.VISIBLE);
+			
+			if(trepnIsInstalled)
+			{
+			   // To Start Profiling:
+			   Intent startProfiling = new Intent("com.quicinc.trepn.start_profiling");
+			   startProfiling.putExtra("com.quicinc.trepn.database_file", "trepnProfiler.db");
+			   sendBroadcast(startProfiling);
+			}
 		}
 
 		@Override
@@ -169,6 +193,8 @@ public class MainActivity extends Activity {
 			mUIupdateData.setAlarm("");
 			
 			publishProgress(mUIupdateData);
+			
+			
 			
 			for(int loop_num=0;loop_num<1;loop_num++)
 			{
@@ -566,7 +592,36 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(String message) {
 			Log.v(TAG, "AsyncTask onPostExecute\n");
-			mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+			Double value = 0.0;
+			
+			if(trepnIsInstalled)
+			{
+			  // To Stop Profiling:
+			  Intent stopProfiling = new Intent("com.quicinc.trepn.stop_profiling");
+			  sendBroadcast(stopProfiling);
+			  mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+			  try {
+				 Thread.sleep(2000);
+			  } catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				 e.printStackTrace();
+			  }
+			  SQLiteDatabase trepnDB = SQLiteDatabase.openDatabase(Environment.getExternalStorageDirectory().getAbsolutePath()+"/trepn/trepnProfiler.db", null, 0);
+			  Cursor result = trepnDB.rawQuery("SELECT * FROM tuneupkit_statistics WHERE name = 'AVERAGE POWER'",null);
+			  			  
+			  if(result.moveToFirst())
+			  {
+			    value = result.getDouble(1);
+			    Log.v(TAG, "Average Power="+value+"\n");
+			    message+="\nAverage Power is "+value/1000+"mW.";
+			  }
+			  
+			  if (!result.isClosed()) 
+	          {
+				 result.close();
+	          }
+			}
+			
 			Toast.makeText(getBaseContext(),
 					message,
 					Toast.LENGTH_SHORT).show();
@@ -574,5 +629,18 @@ public class MainActivity extends Activity {
 
 		
 	}
+	
+private boolean appIsInstalled(String packagename) {
+        PackageManager pm = getPackageManager();
+        boolean appInstalled;
+        try {
+            pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+            appInstalled = true;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+        	appInstalled = false;
+        }
+        return appInstalled;
+}
 
 }//MainActivity
